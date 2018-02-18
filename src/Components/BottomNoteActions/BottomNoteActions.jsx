@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Bottom.css';
+import './BottomNoteActions.css';
 
-const Bottom = props => (
+const BottomNoteActions = props => (
   <div className="last">
 
     <button onClick={() => props.save()}>
@@ -11,10 +11,10 @@ const Bottom = props => (
     <p>{props.remaining} characters left</p>
   </div>
 );
-Bottom.propTypes = {
+BottomNoteActions.propTypes = {
   buttonText: PropTypes.string.isRequired,
   remaining: PropTypes.number.isRequired,
   save: PropTypes.func.isRequired,
 };
-export default Bottom;
+export default BottomNoteActions;
 

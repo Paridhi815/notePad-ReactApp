@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Top.css';
+import './TopTitle.css';
 
-const Top = props => (
+const TopTitle = props => (
   <div className="first">
     <p>
       <b>{props.titleText}</b>
@@ -10,9 +10,9 @@ const Top = props => (
     <button>{props.buttonText}</button>
   </div>
 );
-Top.propTypes = {
+TopTitle.propTypes = {
   titleText: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
 };
-export default Top;
+export default TopTitle;
 

@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Top from '../Title/Top';
-import Task from '../TitleContent/Task';
+import TopTitle from '../TopTitle/TopTitle';
+import TitleContent from '../TitleContent/TitleContent';
 import Note from '../Note/Note';
-import Bottom from '../NoteActions/Bottom';
+import BottomNoteActions from '../BottomNoteActions/BottomNoteActions';
 import './Board.css';
 
 const Board = props => (
   <div className="board">
-    <Top
+    <TopTitle
       titleText={props.titleText}
       buttonText={props.buttonText}
     />
-    <Task
+    <TitleContent
       titleContent={event => props.titleContentSave(event)}
       title={props.titleContent}
     />
@@ -21,7 +21,7 @@ const Board = props => (
       update={event => props.updateContent(event)}
       inputState={props.inputState}
     />
-    <Bottom
+    <BottomNoteActions
       buttonText="Save"
       remaining={props.count}
       save={() => props.saveNote()}

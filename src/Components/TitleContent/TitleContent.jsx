@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Task.css';
+import './TitleContent.css';
 
-const Task = props => (
+const TitleContent = props => (
   <input
     type="text"
     placeholder="Tasks for today"
@@ -10,9 +10,9 @@ const Task = props => (
     value={props.title}
   />
 );
-Task.propTypes = {
+TitleContent.propTypes = {
   titleContent: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
-export default Task;
+export default TitleContent;
 

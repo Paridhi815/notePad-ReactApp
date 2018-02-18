@@ -10,5 +10,6 @@ const FooterButton = props => (
 
 FooterButton.propTypes = {
   buttonText: PropTypes.string.isRequired,
+  goBack: PropTypes.func.isRequired,
 };
 export default FooterButton;
