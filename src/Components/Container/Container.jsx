@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Render.css';
+import './Container.css';
 import Header from '../Header/Header';
 import Board from '../Board/Board';
 import SavedNotes from '../SavedNotes/SaveNotes';
@@ -60,6 +60,7 @@ class Container extends React.Component {
         content: '',
         count: 5,
         homepage: false,
+        inputState: '',
       });
       console.log(this.state.notes);
     }

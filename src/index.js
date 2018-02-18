@@ -1,1 +1,1 @@
-require('./Components/Render/Render');
+require('./Components/Container/Container');
