@@ -9,8 +9,8 @@ import './Board.css';
 const Board = props => (
   <div className="board">
     <Top
-      titleText="Note Title"
-      buttonText="en"
+      titleText={props.titleText}
+      buttonText={props.buttonText}
     />
     <Task
       titleContent={event => props.titleContentSave(event)}
@@ -30,6 +30,8 @@ const Board = props => (
 );
 
 Board.propTypes = {
+  titleText: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
   titleContentSave: PropTypes.func.isRequired,
   titleContent: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
