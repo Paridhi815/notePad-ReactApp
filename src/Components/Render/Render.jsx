@@ -4,6 +4,7 @@ import './Render.css';
 import Header from '../Header/Header';
 import Board from '../Board/Board';
 import SavedNotes from '../SavedNotes/SaveNotes';
+import FooterButton from '../FooterButton/FooterButton';
 
 class Container extends React.Component {
   constructor() {
@@ -48,16 +49,26 @@ class Container extends React.Component {
       title: this.state.titleContent,
       content: this.state.content,
     };
-    const { notes } = this.state;
-    notes.push(note);
+    if (note.title === '' || note.content === '') {
+      alert('Please Enter Both the fields');
+    }else {
+      const { notes } = this.state;
+      notes.push(note);
+      this.setState({
+        notes,
+        titleContent: '',
+        content: '',
+        count: 5,
+        homepage: false,
+      });
+      console.log(this.state.notes);
+    }
+  }
+
+  goBack=() => {
     this.setState({
-      notes,
-      titleContent: '',
-      content: '',
-      count: 5,
-      homepage: false,
+      homepage: true,
     });
-    console.log(this.state.notes);
   }
   render() {
     if (this.state.homepage) {
@@ -92,8 +103,9 @@ class Container extends React.Component {
           headerText="Saved Notes"
         />
         <SavedNotes notes={JSON.stringify(this.state.notes)} />
-        <Header
-          headerText="About Us"
+        <FooterButton
+          buttonText="Create New Note"
+          goBack={this.goBack}
         />
       </div>
     );
