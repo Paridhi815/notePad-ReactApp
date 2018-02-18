@@ -7,7 +7,7 @@ const SavedNotes = props => (
     (
       <div className="save-body" >
         <p className="title-text">{note.title}</p>
-        <textarea onClick={event => props.edit(event)} className="note-text">{note.content}</textarea>
+        <textarea onClick={(title, content) => props.edit(note.title, note.content)} className="note-text">{note.content}</textarea>
       </div>
     ))
 );

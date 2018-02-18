@@ -72,16 +72,15 @@ class Container extends React.Component {
     });
   }
 
-  edit=(event) => {
-    const noteText = event.target.value;
+  edit=(titleContent, content) => {
     // for (let i = 0; i < this.notes.length; i += 1) {
     //   while (this.notes[i].content === noteText) {
     //     titleText = this.notes[i].title;
     //   }
     // }
     this.setState({
-      content: noteText,
-      // title: titleText,
+      content,
+      titleContent,
       homepage: true,
     });
   }
