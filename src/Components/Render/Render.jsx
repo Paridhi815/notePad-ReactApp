@@ -51,7 +51,7 @@ class Container extends React.Component {
     };
     if (note.title === '' || note.content === '') {
       alert('Please Enter Both the fields');
-    }else {
+    } else {
       const { notes } = this.state;
       notes.push(note);
       this.setState({
@@ -67,6 +67,20 @@ class Container extends React.Component {
 
   goBack=() => {
     this.setState({
+      homepage: true,
+    });
+  }
+
+  edit=(event) => {
+    const noteText = event.target.value;
+    // for (let i = 0; i < this.notes.length; i += 1) {
+    //   while (this.notes[i].content === noteText) {
+    //     titleText = this.notes[i].title;
+    //   }
+    // }
+    this.setState({
+      content: noteText,
+      // title: titleText,
       homepage: true,
     });
   }
@@ -102,7 +116,10 @@ class Container extends React.Component {
         <Header
           headerText="Saved Notes"
         />
-        <SavedNotes notes={JSON.stringify(this.state.notes)} />
+        <SavedNotes
+          notes={JSON.stringify(this.state.notes)}
+          edit={this.edit}
+        />
         <FooterButton
           buttonText="Create New Note"
           goBack={this.goBack}
