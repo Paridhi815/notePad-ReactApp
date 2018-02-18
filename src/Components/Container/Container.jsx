@@ -16,6 +16,7 @@ class Container extends React.Component {
       titleContent: '',
       notes: [],
       homepage: true,
+      // noteId: 0,
     };
   }
 

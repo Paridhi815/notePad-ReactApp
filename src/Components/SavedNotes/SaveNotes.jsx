@@ -5,9 +5,9 @@ import './SaveNotes.css';
 const SavedNotes = props => (
   JSON.parse(props.notes).map(note =>
     (
-      <div className="save-body" >
+      <div className="save-body" onClick={() => props.edit(note.title, note.content)} >
         <p className="title-text">{note.title}</p>
-        <textarea onClick={(title, content) => props.edit(note.title, note.content)} className="note-text">{note.content}</textarea>
+        <textarea className="note-text">{note.content}</textarea>
       </div>
     ))
 );
