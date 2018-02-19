@@ -55,11 +55,7 @@ class Container extends React.Component {
       alert('Please Enter Both the fields');
     } else {
       const { notes } = this.state;
-      if (this.state.noteId) {
-        notes[this.state.noteId - 1] = note;
-      } else {
-        notes.push(note);
-      }
+      notes[note.noteId - 1] = note;
       this.setState({
         notes,
         noteId: null,
