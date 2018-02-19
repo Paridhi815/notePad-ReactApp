@@ -68,19 +68,6 @@ class Container extends React.Component {
     }
   }
 
-
-  // const { notes } = this.state;
-  //   for (let i = 0; i < notes.length; i += 1) {
-  //     if (identity === notes[i].noteId) {
-  //       this.setState({
-  //         content,
-  //         titleContent,
-  //         noteId: identity,
-  //         homepage: false,
-  //       });
-  //     }
-  //   }
-
   goBack=() => {
     this.setState({
       homepage: true,
