@@ -16,7 +16,7 @@ class Container extends React.Component {
       titleContent: '',
       notes: [],
       homepage: true,
-      // noteId: 0,
+      noteId: null,
     };
   }
 
@@ -49,23 +49,41 @@ class Container extends React.Component {
     const note = {
       title: this.state.titleContent,
       content: this.state.content,
+      noteId: this.state.noteId || this.state.notes.length + 1,
     };
     if (note.title === '' || note.content === '') {
       alert('Please Enter Both the fields');
     } else {
       const { notes } = this.state;
-      notes.push(note);
+      if (this.state.noteId) {
+        notes[this.state.noteId - 1] = note;
+      } else {
+        notes.push(note);
+      }
       this.setState({
         notes,
+        noteId: null,
         titleContent: '',
         content: '',
         count: 5,
         homepage: false,
         inputState: '',
       });
-      console.log(this.state.notes);
     }
   }
+
+
+  // const { notes } = this.state;
+  //   for (let i = 0; i < notes.length; i += 1) {
+  //     if (identity === notes[i].noteId) {
+  //       this.setState({
+  //         content,
+  //         titleContent,
+  //         noteId: identity,
+  //         homepage: false,
+  //       });
+  //     }
+  //   }
 
   goBack=() => {
     this.setState({
@@ -73,15 +91,11 @@ class Container extends React.Component {
     });
   }
 
-  edit=(titleContent, content) => {
-    // for (let i = 0; i < this.notes.length; i += 1) {
-    //   while (this.notes[i].content === noteText) {
-    //     titleText = this.notes[i].title;
-    //   }
-    // }
+  edit=(titleContent, content, noteId) => {
     this.setState({
       content,
       titleContent,
+      noteId,
       homepage: true,
     });
   }
@@ -119,7 +133,7 @@ class Container extends React.Component {
         />
         <SavedNotes
           notes={JSON.stringify(this.state.notes)}
-          edit={this.edit}
+          edit={(titleContent, content, noteId) => this.edit(titleContent, content, noteId)}
         />
         <FooterButton
           buttonText="Create New Note"
