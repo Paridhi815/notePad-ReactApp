@@ -6,13 +6,14 @@ const TitleContent = props => (
   <input
     type="text"
     placeholder="Tasks for today"
-    onChange={event => props.titleContent(event)}
-    value={props.title}
+    onChange={event => props.titleContentSave(event)}
+    value={props.titleContent}
   />
 );
 TitleContent.propTypes = {
-  titleContent: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  titleContentSave: PropTypes.func.isRequired,
+  titleContent: PropTypes.string.isRequired,
 };
+
 export default TitleContent;
 

@@ -13,9 +13,9 @@ const Note = props => (
     <div className="note">
       <textarea
         onChange={(event) => {
-        props.update(event);
+        props.updateContent(event);
       }}
-        value={props.displayValue}
+        value={props.content}
         className={props.inputState}
       />
     </div>
@@ -23,8 +23,8 @@ const Note = props => (
 );
 
 Note.propTypes = {
-  displayValue: PropTypes.string.isRequired,
-  update: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
+  updateContent: PropTypes.func.isRequired,
   inputState: PropTypes.string.isRequired,
 };
 

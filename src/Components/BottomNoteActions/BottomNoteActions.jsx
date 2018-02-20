@@ -16,5 +16,7 @@ BottomNoteActions.propTypes = {
   remaining: PropTypes.number.isRequired,
   save: PropTypes.func.isRequired,
 };
+
+
 export default BottomNoteActions;
 
