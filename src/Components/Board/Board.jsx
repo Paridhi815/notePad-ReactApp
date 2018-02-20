@@ -5,7 +5,7 @@ import TopTitle from '../TopTitle/TopTitle';
 import TitleContent from '../TitleContent/TitleContent';
 import Note from '../Note/Note';
 import BottomNoteActions from '../BottomNoteActions/BottomNoteActions';
-import { saveNote } from '../../Redux/Actions';
+import { saveNote, editNote } from '../../Redux/Actions';
 import './Board.css';
 
 class Board extends React.Component {
@@ -18,6 +18,12 @@ class Board extends React.Component {
       titleContent: '',
       storeNote: {},
     };
+  }
+  componentWillMount() {
+    this.setState({
+      titleContent: this.props.title,
+      content: this.props.content,
+    });
   }
    updateContent=(event) => {
      let text = event.target.value;
@@ -58,16 +64,17 @@ class Board extends React.Component {
         content: '',
         count: 5,
         inputState: '',
-        storeNote: note,
+        // storeNote: note,
       });
     }
   }
-  edit=(titleContent, content, noteId) => {
-    this.setState({
-      content,
-      titleContent,
-    });
-  }
+  // edit=(titleContent, content, noteId) => {
+  //   this.props.editNote(noteId);
+  //   this.setState({
+  //     content,
+  //     titleContent,
+  //   });
+  // }
 
   render() {
     return (
@@ -88,7 +95,7 @@ class Board extends React.Component {
         <BottomNoteActions
           buttonText="Save"
           remaining={this.state.count}
-          save={() => this.saveNote(this.state.storeNote)}
+          save={() => this.saveNote()}
         />
       </div>
     );
@@ -106,10 +113,13 @@ Board.propTypes = {
 const mapStateToProps = state => ({
   noteId: state.noteReducer.noteId,
   len: state.noteReducer.notes.length,
+  title: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].title : null,
+  content: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].content : null,
 });
 
 const mapDispatchToProps = dispatch => ({
   saveNote: note => dispatch(saveNote(note)),
+  // editNote: id => dispatch(editNote(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

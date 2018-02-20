@@ -27,6 +27,7 @@ const noteReducer = (previousState = defaultState, action) => {
     case 'GO_BACK': {
       return {
         ...previousState,
+        noteId: null,
         homepage: true,
       };
     }
