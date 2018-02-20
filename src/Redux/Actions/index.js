@@ -1,6 +1,7 @@
 const SAVE_NOTE = 'SAVE_NOTE';
 const EDIT_NOTE = 'EDIT_NOTE';
 const GO_BACK = 'GO_BACK';
+const GET_NOTES = 'GET_NOTES';
 
 export const saveNote = note => (
   {
@@ -17,3 +18,8 @@ export const editNote = noteId => ({
 export const goBack = () => (
   { type: GO_BACK }
 );
+
+export const getNotes = data => ({
+  type: GET_NOTES,
+  payload: data,
+});

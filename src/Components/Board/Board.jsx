@@ -5,7 +5,7 @@ import TopTitle from '../TopTitle/TopTitle';
 import TitleContent from '../TitleContent/TitleContent';
 import Note from '../Note/Note';
 import BottomNoteActions from '../BottomNoteActions/BottomNoteActions';
-import { saveNote, editNote } from '../../Redux/Actions';
+import { saveNote } from '../../Redux/Actions';
 import './Board.css';
 
 class Board extends React.Component {
@@ -16,7 +16,6 @@ class Board extends React.Component {
       content: '',
       inputState: '',
       titleContent: '',
-      storeNote: {},
     };
   }
   componentWillMount() {
@@ -64,18 +63,9 @@ class Board extends React.Component {
         content: '',
         count: 5,
         inputState: '',
-        // storeNote: note,
       });
     }
   }
-  // edit=(titleContent, content, noteId) => {
-  //   this.props.editNote(noteId);
-  //   this.setState({
-  //     content,
-  //     titleContent,
-  //   });
-  // }
-
   render() {
     return (
       <div className="board">
@@ -103,8 +93,8 @@ class Board extends React.Component {
 }
 
 Board.propTypes = {
-  // titleContentSave: PropTypes.func.isRequired,
-  // updateContent: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   saveNote: PropTypes.func.isRequired,
   noteId: PropTypes.number.isRequired,
 
@@ -114,7 +104,8 @@ const mapStateToProps = state => ({
   noteId: state.noteReducer.noteId,
   len: state.noteReducer.notes.length,
   title: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].title : null,
-  content: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].content : null,
+  content: state.noteReducer.noteId ?
+    state.noteReducer.notes[state.noteReducer.noteId].content : null,
 });
 
 const mapDispatchToProps = dispatch => ({

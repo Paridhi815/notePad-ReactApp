@@ -31,6 +31,13 @@ const noteReducer = (previousState = defaultState, action) => {
         homepage: true,
       };
     }
+    case 'GET_NOTES': {
+      const notes = action.payload;
+      return {
+        ...previousState,
+        notes,
+      };
+    }
     default: {
       return previousState;
     }

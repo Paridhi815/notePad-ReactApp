@@ -6,9 +6,18 @@ import Header from '../Header/Header';
 import Board from '../Board/Board';
 import SavedNotes from '../SavedNotes/SaveNotes';
 import FooterButton from '../FooterButton/FooterButton';
-import { saveNote } from '../../Redux/Actions';
+import { saveNote, getNotes } from '../../Redux/Actions';
 
 class Container extends React.Component {
+  componentDidMount() {
+    fetch('/getNotes')
+      .then(response => response.json())
+      .then((data) => {
+        console.log('pari', data);
+        this.props.getNotes(data);
+      });
+  }
+
   // constructor() {
   //   super();
   //   this.state = {
@@ -130,6 +139,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   saveNote: notes => dispatch(saveNote(notes)),
+  getNotes: data => dispatch(getNotes(data)),
   // editNote: noteId => dispatch(editNote(noteId)),
 });
 
