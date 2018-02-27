@@ -8,6 +8,7 @@ import SavedNotes from '../SavedNotes/SaveNotes';
 import FooterButton from '../FooterButton/FooterButton';
 import { saveNote, getNotes } from '../../Redux/Actions';
 
+
 class Container extends React.Component {
   componentDidMount() {
     fetch('/getNotes')

@@ -10,6 +10,7 @@ const handler = (request, response) => {
         noteId: noteObject.noteid,
       });
     });
+    console.log(notes);
     response(JSON.stringify(notes));
   });
 };

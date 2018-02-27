@@ -9,7 +9,7 @@ const noteReducer = (previousState = defaultState, action) => {
   switch (action.type) {
     case 'SAVE_NOTE': {
       const { notes } = previousState;
-      notes[action.payload.noteId] = action.payload; // action.payload me ek note hai
+      notes.push(action.payload); // action.payload me ek note hai
       return {
         ...previousState,
         notes,

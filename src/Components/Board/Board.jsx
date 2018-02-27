@@ -103,9 +103,9 @@ Board.propTypes = {
 const mapStateToProps = state => ({
   noteId: state.noteReducer.noteId,
   len: state.noteReducer.notes.length,
-  title: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].title : null,
+  title: state.noteReducer.noteId ? state.noteReducer.notes[state.noteReducer.noteId].title : '',
   content: state.noteReducer.noteId ?
-    state.noteReducer.notes[state.noteReducer.noteId].content : null,
+    state.noteReducer.notes[state.noteReducer.noteId].content : '',
 });
 
 const mapDispatchToProps = dispatch => ({

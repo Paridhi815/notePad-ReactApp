@@ -1,14 +1,22 @@
 const Models = require('../../models');
 
 const handler = (request, response) => {
-  console.log(JSON.parse(request.payload), '**');
+  console.log(request.payload, '----------');
+  // console.log(JSON.parse(request.payload), '**');
   const noteList = JSON.parse(request.payload);
-  const newNoteList = noteList.map(note => ({
-    title: note.title,
-    content: note.content,
-    noteid: note.noteId,
-  }));
-  console.log(newNoteList);
+  // noteList = noteList.slice(1);
+  let newNoteList;
+  if (noteList != null) {
+    newNoteList = noteList.map(note => ({
+      title: note.title,
+      content: note.content,
+      noteid: note.noteId,
+    }));
+  }
+  Models.notes.destroy({ truncate: true });
+  Models.notes.bulkCreate(newNoteList)
+    .then(() => response('Notes Synced to DB'))
+    .catch(() => response('Internal Server Error'));
 
   // for (let i = 0; i < noteList.length; i += 1) {
   //   Models.notes.upsert({
